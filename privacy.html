@@ -7,11 +7,6 @@
     <link rel="icon" type="image/png" href="bear_header.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-               color: var(--text); background: var(--paper); line-height: 1.6; margin: 0; }
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-        .top-bar { background: var(--ink); color: var(--card); padding: 18px 0; border-bottom: 3px solid var(--ochre); }
-        .top-bar a { color: var(--ochre); text-decoration: none; font-weight: 700; }
         section { padding: 48px 0; }
         .text-page { max-width: 760px; }
         .text-page h1 { margin-bottom: 18px; }
@@ -21,11 +16,40 @@
     </style>
 </head>
 <body>
-<div class="top-bar">
-    <div class="container">
-        <a href="index.html">← ЧОП «Медведь-НК»</a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="index.html">
+            <img class="brand-bear" src="bear_header.png" alt="Логотип: медведь ЧОП Медведь-НК">
+            <span class="brand-name">
+                <b>МЕДВЕДЬ-НК</b>
+                <span>частное охранное предприятие</span>
+            </span>
+        </a>
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html#services">Услуги</a>
+            <a href="index.html#advantages">Почему мы</a>
+            <a href="index.html#how">Как работаем</a>
+            <a href="index.html#prices">Тарифы</a>
+            <a href="index.html#contacts">Контакты</a>
+            <a class="nav-phone" href="tel:+73843532233">+7 (3843) 53-22-33</a>
+        </nav>
+        <div class="header-phones2">
+            <div class="hcp-item">
+                <span class="hcp-label">круглосуточно</span>
+                <a class="hcp-number" href="tel:+73843532233">+7 (3843) 53-22-33</a>
+            </div>
+            <span class="hcp-divider"></span>
+            <div class="hcp-item">
+                <span class="hcp-label">офис</span>
+                <a class="hcp-number" href="tel:+79521700372">+7 (952) 170-03-72</a>
+            </div>
+        </div>
+        <a class="btn btn-accent header-cta" href="index.html#lead-form">Заказать охрану</a>
+        <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-</div>
+</header>
 
 <section>
     <div class="container text-page">
@@ -35,7 +59,7 @@
 
         <h2>1. Какие данные мы получаем</h2>
         <p>При отправке заявки через сайт: имя, номер телефона, тип объекта и текст комментария
-        для связи с вами. Данные передаются на почту ЧОП и хранятся у Оператора.</p>
+        для связи с вами.</p>
 
         <h2>2. Цели обработки</h2>
         <p>Данные используются исключительно для обратной связи по заявке: консультация,
@@ -56,5 +80,35 @@
         <p class="text-muted">Обновлено: 2026 год.</p>
     </div>
 </section>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <div class="footer-brand">ЧОП «Медведь-НК»</div>
+            <span class="footer-sub">частное охранное предприятие</span>
+            <p class="footer-note">ООО ЧОП «Медведь-НК», ИНН 4218108144, ОГРН 1104218001953.<br>
+            Лицензия Росгвардии.<br>Круглосуточно, без выходных.</p>
+        </div>
+        <nav class="footer-nav">
+            <a href="index.html#services">Услуги</a>
+            <a href="index.html#advantages">Почему мы</a>
+            <a href="index.html#how">Как работаем</a>
+            <a href="index.html#prices">Тарифы</a>
+            <a href="index.html#contacts">Контакты</a>
+        </nav>
+        <div class="footer-contacts">
+            <a class="footer-phone" href="tel:+73843532233">+7 (3843) 53-22-33</a>
+            <span class="footer-plabel">Многоканальный · круглосуточно</span>
+            <a href="tel:+79045722907">+7 (904) 572-29-07</a> <span class="footer-plabel">— Многоканальный · 24/7</span>
+            <a href="tel:+79521700372">+7 (952) 170-03-72</a> <span class="footer-plabel">— Офис</span>
+            <a href="mailto:bearlogha@mail.ru">bearlogha@mail.ru</a>
+            <span>г. Новокузнецк, ул. 40 лет ВЛКСМ, 70</span>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        © 2010–2026 ЧОП «Медведь-НК». Все права защищены.
+    </div>
+</footer>
+<script src="app.js"></script>
 </body>
 </html>

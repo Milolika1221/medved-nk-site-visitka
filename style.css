@@ -209,7 +209,7 @@ section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-d
 .site-footer { background: var(--ink-soft); color: var(--muted); padding: 44px 0 22px; font-size: 14px; border-top: 3px solid var(--ochre); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 36px; }
 .footer-brand { color: var(--text); font-weight: 800; font-size: 17px; margin-bottom: 10px; letter-spacing: .04em; }
-.footer-sub { color: var(--ochre-deep); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 10px; }
+.footer-sub { color: var(--ochre-deep); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 16px; }
 .footer-note { font-size: 13px; line-height: 1.5; }
 .footer-nav { display: grid; gap: 7px; }
 .footer-nav a { color: var(--muted); text-decoration: none; }
