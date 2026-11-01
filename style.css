@@ -124,6 +124,7 @@ section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-d
 .hero-lead { font-size: 17px; color: #57503F; max-width: 560px; margin-bottom: 26px; }
 .hero-actions { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; margin-bottom: 26px; }
 .hero-points { list-style: none; display: flex; gap: 22px; flex-wrap: wrap; color: #57503F; font-size: 14px; font-weight: 600; }
+.hero-points + .hero-points { margin-top: 12px; }
 .hero-points li::before { content: "✓ "; color: var(--ochre-deep); font-weight: 700; }
 .hero-bear { display: flex; justify-content: center; }
 .hero-bear img { width: min(430px, 100%); height: auto; filter: drop-shadow(8px 12px 0 rgba(26,26,26,.10)); }
