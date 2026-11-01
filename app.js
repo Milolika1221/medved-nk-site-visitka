@@ -1,4 +1,3 @@
-// ЧОП «Медведь-НК» — статичная версия (GitHub Pages)
 (function () {
     "use strict";
 
@@ -42,7 +41,7 @@
         });
     }
 
-    // Форма заявки → FormSubmit (письмо на почту ЧОПа)
+    // Форма заявки -> FormSubmit (письмо на почту ЧОПа)
     var form = document.getElementById("leadForm");
     var status = document.getElementById("formStatus");
     if (!form) return;
