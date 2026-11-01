@@ -1,3 +1,5 @@
+/* ЧОП «Медведь-НК» — сайт-визитка. ВАРИАНТ 2: полностью светлая тема.
+   Все секции светлые, тёмных блоков нет. Палитра вывески: охра/кирпичный на тёплом бежевом. */
 :root {
     --paper: #F6F2E7;      /* светлый тёплый фон страницы */
     --card: #FDFAF2;       /* кремовые карточки */
@@ -76,14 +78,14 @@ body {
 .map-fab {
     position: fixed; right: 18px; bottom: 18px; z-index: 80;
     display: flex; align-items: center; gap: 10px;
-    padding: 9px 16px 9px 11px; border-radius: 12px;
+    padding: 9px 16px 9px 12px; border-radius: 12px;
     background: var(--card); border: 1.5px solid var(--line);
     box-shadow: 0 8px 22px rgba(26,26,26,.16);
     text-decoration: none; transition: .15s;
 }
 .map-fab:hover { border-color: var(--ochre-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,26,26,.20); }
-.map-fab-pin { width: 30px; height: 30px; color: var(--brick); flex-shrink: 0; }
-.map-fab span { font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap; }
+.map-fab-pin { width: 26px; height: 26px; color: var(--text); flex-shrink: 0; }
+.map-fab span { font-size: 13.5px; font-weight: 600; color: var(--text); }
 
 /* Карта офиса */
 .map-frame { margin-top: 34px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(26,26,26,.08); }
@@ -187,7 +189,11 @@ section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-d
 .consent input { margin-top: 3px; accent-color: var(--ochre-deep); }
 .consent a { color: var(--ochre-deep); }
 .form-status { font-size: 14px; min-height: 20px; }
-.form-status.ok { color: #3D6B2E; font-weight: 700; }
+.form-status.ok {
+    display: inline-block; padding: 10px 16px; margin-top: 4px;
+    background: #e7f0e2; border: 1px solid #b9d0b0; border-radius: 8px;
+    color: #3d6b2e; font-weight: 700;
+}
 .form-status.err { color: var(--brick); }
 
 /* Контакты */
@@ -248,16 +254,3 @@ section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-d
     .section { padding: 48px 0; }
     .footer-grid { grid-template-columns: 1fr; }
 }
-
-/* Плавающий значок ГИС (правый нижний угол) */
-.gis-fab {
-    position: fixed; right: 18px; bottom: 18px; z-index: 80;
-    display: flex; align-items: center; gap: 10px;
-    padding: 7px 14px 7px 7px; border-radius: 12px;
-    background: var(--card); border: 1.5px solid var(--line);
-    box-shadow: 0 8px 22px rgba(26,26,26,.16);
-    text-decoration: none; transition: .15s;
-}
-.gis-fab:hover { border-color: #0BA05C; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,26,26,.20); }
-.gis-fab-pin { width: 26px; height: 26px; color: var(--text); flex-shrink: 0; }
-.gis-fab-text { color: var(--text); font-size: 13.5px; font-weight: 600; }
