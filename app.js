@@ -66,7 +66,7 @@
         btn.disabled = true;
         setStatus("Отправляем…", true);
 
-        fetch("https://formsubmit.co/ajax/3c0fd986d4ec24e2b4ec397f457ba539", {
+        fetch("https://formsubmit.co/ajax/bearlogha@mail.ru", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({
