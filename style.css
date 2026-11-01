@@ -240,8 +240,14 @@ section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-d
     .main-nav a { padding: 11px 0; border-bottom: 1px solid rgba(26,26,26,.08); }
     .main-nav.open { display: flex; }
     .main-nav .nav-phone { display: block; color: var(--ochre-deep) !important; }
-    .header-phones2 { display: none; }
-    .burger { display: block; }
+    .header-inner { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+    .header-phones2 {
+        display: flex; width: 100%; justify-content: center; align-items: center;
+        gap: 14px; margin-top: 10px;
+    }
+    .header-phones2 .hcp-item { align-items: center; }
+    .burger { display: block; order: 2; margin-left: auto; }
+    .header-phones2 { order: 3; }
     .header-cta { display: none; }
     .cards-grid, .steps, .adv-grid, .contacts-grid { grid-template-columns: 1fr 1fr; }
     .form-wrap { grid-template-columns: 1fr; }
