@@ -1,0 +1,265 @@
+/* ЧОП «Медведь-НК» — сайт-визитка. ВАРИАНТ 2: полностью светлая тема.
+   Все секции светлые, тёмных блоков нет. Палитра вывески: охра/кирпичный на тёплом бежевом. */
+:root {
+    --paper: #F6F2E7;      /* светлый тёплый фон страницы */
+    --card: #FDFAF2;       /* кремовые карточки */
+    --ink-soft: #EFE8D8;   /* чередующаяся секция — чуть темнее беж */
+    --ochre: #C89B3C;      /* яркая охра — кнопки, акценты */
+    --ochre-deep: #8C6A20; /* тёмная охра — ссылки, подписи */
+    --brick: #8F1D1D;      /* кирпично-красный */
+    --text: #26211B;
+    --muted: #6E6555;
+    --line: #DCD4BE;
+    --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background: var(--paper);
+    line-height: 1.6;
+}
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+/* Шапка */
+.site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--card);
+    color: var(--text);
+    border-bottom: 3px solid var(--ochre);
+    box-shadow: 0 1px 8px rgba(26,26,26,.06);
+}
+.header-inner { display: flex; align-items: center; gap: 28px; min-height: 68px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; white-space: nowrap; }
+.brand-bear { width: 44px; height: 34px; flex-shrink: 0; }
+.brand-name { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-name b { color: var(--text); font-size: 17px; letter-spacing: .04em; }
+.brand-name span { color: var(--ochre-deep); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; }
+.main-nav { display: flex; gap: 18px; margin-left: auto; }
+.main-nav a { color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; }
+.main-nav a:hover { color: var(--text); }
+.nav-phone { display: none; font-weight: 700; color: var(--text) !important; white-space: nowrap; }
+
+/* Телефон в шапке (компактный) и выпадающий список в hero */
+.header-phones2 { display: flex; gap: 14px; align-items: center; }
+.hcp-item { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.3; }
+.hcp-divider { width: 1px; height: 30px; background: var(--line); }
+.hcp-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.hcp-number { color: var(--text); text-decoration: none; font-weight: 700; font-size: 13.5px; white-space: nowrap; }
+.hcp-number:hover { color: var(--ochre-deep); }
+
+.phone-dd { position: relative; }
+.phone-dd-btn .btn-phone-ico { width: 18px; height: 18px; color: var(--ochre-deep); vertical-align: -3.5px; margin-right: 3px; }
+.phone-dd-btn .dd-caret { display: inline-block; margin-left: 4px; transition: transform .15s; }
+.phone-dd.open .dd-caret { transform: rotate(180deg); }
+.phone-dd-menu {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0; z-index: 60;
+    min-width: 270px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; box-shadow: 0 12px 32px rgba(26,26,26,.16); padding: 8px;
+}
+.phone-dd.open .phone-dd-menu { display: block; }
+.phone-dd-item { display: flex; flex-direction: column; gap: 1px; padding: 10px 12px; border-radius: 8px; }
+.phone-dd-item .hp-label { color: var(--muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; }
+.phone-dd-item:hover { background: rgba(169,130,42,.10); }
+.phone-dd-item a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 17px; white-space: nowrap; }
+.phone-dd-item a:hover { color: var(--ochre-deep); }
+.form-phone-note { color: var(--muted); font-size: 14px; font-weight: 400; }
+.contact-line { margin-top: 6px; }
+.contact-block .contact-line, .contact-block .contact-line a { color: var(--muted); font-size: 15px; }
+.contact-block .contact-line a { text-decoration: none; }
+.contact-block .contact-line a:hover { color: var(--ochre-deep); }
+
+/* Плавающая карточка местоположения (правый нижний угол) */
+.map-fab {
+    position: fixed; right: 18px; bottom: 18px; z-index: 80;
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px 9px 11px; border-radius: 12px;
+    background: var(--card); border: 1.5px solid var(--line);
+    box-shadow: 0 8px 22px rgba(26,26,26,.16);
+    text-decoration: none; transition: .15s;
+}
+.map-fab:hover { border-color: var(--ochre-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,26,26,.20); }
+.map-fab-pin { width: 30px; height: 30px; color: var(--brick); flex-shrink: 0; }
+.map-fab span { font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap; }
+
+/* Карта офиса */
+.map-frame { margin-top: 34px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(26,26,26,.08); }
+.map-frame iframe { display: block; width: 100%; border: 0; }
+.header-cta { white-space: nowrap; }
+.burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; margin-left: auto; }
+.burger span { display: block; width: 24px; height: 2.5px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: .2s; }
+
+/* Кнопки */
+.btn {
+    display: inline-block; text-decoration: none; text-align: center;
+    padding: 10px 22px; border-radius: 6px; border: 1.5px solid transparent;
+    font-weight: 700; font-size: 15px; cursor: pointer; transition: .15s;
+    letter-spacing: .02em;
+}
+.btn-lg { padding: 13px 28px; font-size: 16px; }
+.btn-accent { background: var(--ochre); color: #1A1A1A; }
+.btn-accent:hover { background: var(--ochre-deep); color: var(--card); }
+.btn-ghost { border-color: rgba(26,26,26,.35); color: var(--text); background: transparent; }
+.btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-deep); }
+section .btn-ghost { border-color: rgba(26,26,26,.35); color: var(--text); }
+section .btn-ghost:hover { border-color: var(--ochre-deep); color: var(--ochre-deep); background: rgba(169,130,42,.08); }
+
+/* Герой (светлый) */
+.hero { position: relative; background: var(--paper); padding: 64px 0 72px; }
+.hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 78% 42%, rgba(200,155,60,.20), transparent 55%);
+}
+.hero-inner { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+.hero-badge {
+    display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .05em;
+    color: var(--card); background: var(--brick); padding: 6px 16px; border-radius: 4px;
+    margin-bottom: 20px; text-transform: uppercase;
+}
+.hero h1 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.12; margin-bottom: 16px; color: var(--text); }
+.accent { color: var(--ochre-deep); }
+.hero-lead { font-size: 17px; color: #57503F; max-width: 560px; margin-bottom: 26px; }
+.hero-actions { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; margin-bottom: 26px; }
+.hero-points { list-style: none; display: flex; gap: 22px; flex-wrap: wrap; color: #57503F; font-size: 14px; font-weight: 600; }
+.hero-points li::before { content: "✓ "; color: var(--ochre-deep); font-weight: 700; }
+.hero-bear { display: flex; justify-content: center; }
+.hero-bear img { width: min(430px, 100%); height: auto; filter: drop-shadow(8px 12px 0 rgba(26,26,26,.10)); }
+
+/* Секции */
+.section { padding: 64px 0; }
+.section-dark { background: var(--ink-soft); color: var(--text); }
+.section-title { font-size: clamp(24px, 3vw, 32px); margin-bottom: 10px; }
+.section-sub { color: var(--muted); max-width: 640px; margin-bottom: 34px; }
+.section-dark .section-sub { color: var(--muted); }
+.section-title .accent { color: var(--ochre-deep); }
+
+/* Услуги */
+.cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 18px 16px; transition: .15s; }
+.card:hover { border-color: var(--ochre); box-shadow: 0 6px 18px rgba(26,26,26,.10); transform: translateY(-2px); }
+.card-icon { margin-bottom: 10px; }
+.card-icon svg { width: 38px; height: 38px; color: var(--ochre-deep); display: block; }
+.card h3 { font-size: 14.5px; margin-bottom: 6px; line-height: 1.3; }
+.card p { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+
+/* Преимущества */
+.adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
+.adv { border-left: 3px solid var(--ochre-deep); padding-left: 18px; }
+.adv b { display: block; font-size: 22px; margin-bottom: 4px; color: var(--text); }
+.adv span { color: var(--muted); font-size: 14.5px; }
+
+/* Шаги */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 34px; }
+.step { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+.step span { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 6px; background: var(--ochre-deep); color: var(--card); font-weight: 800; margin-bottom: 12px; }
+.step h3 { font-size: 16px; margin-bottom: 6px; }
+.step p { font-size: 14px; color: var(--muted); }
+
+/* Тарифы */
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 34px; }
+.price-card { position: relative; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 26px; display: flex; flex-direction: column; }
+.price-card h3 { font-size: 18px; margin-bottom: 10px; }
+.price { font-size: 30px; font-weight: 800; margin-bottom: 16px; }
+.price span { font-size: 15px; font-weight: 500; color: var(--muted); }
+.price-card ul { list-style: none; margin-bottom: 22px; flex-grow: 1; }
+.price-card li { font-size: 14.5px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.price-card li::before { content: "— "; color: var(--ochre-deep); font-weight: 700; }
+.price-card .btn { align-self: stretch; }
+.price-card-popular { border: 2px solid var(--ochre); box-shadow: 0 8px 24px rgba(200,155,60,.22); }
+.price-flag { position: absolute; top: -12px; left: 22px; background: var(--brick); color: var(--card); font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 4px; }
+
+/* Форма */
+.form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.form-phone { color: var(--ochre-deep); font-weight: 800; text-decoration: none; font-size: 18px; white-space: nowrap; }
+.form-note { color: var(--muted); font-size: 14px; margin-top: 10px; }
+.lead-form { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 14px; box-shadow: 0 8px 24px rgba(26,26,26,.08); }
+.lead-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 700; }
+.lead-form input[type="text"], .lead-form input[type="tel"], .lead-form select, .lead-form textarea {
+    font: inherit; font-weight: 400; color: var(--text);
+    padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--paper);
+}
+.lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus { outline: none; border-color: var(--ochre); background: var(--white); }
+.lead-form input::placeholder, .lead-form textarea::placeholder { color: #9A917E; }
+.consent { grid-template-columns: auto 1fr; align-items: start; font-weight: 400 !important; font-size: 13px !important; color: var(--muted); }
+.consent input { margin-top: 3px; accent-color: var(--ochre-deep); }
+.consent a { color: var(--ochre-deep); }
+.form-status { font-size: 14px; min-height: 20px; }
+.form-status.ok { color: #3D6B2E; font-weight: 700; }
+.form-status.err { color: var(--brick); }
+
+/* Контакты */
+.contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 30px; }
+.contact-block h3 { font-size: 13px; color: var(--ochre-deep); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.contact-block a { color: var(--muted); font-size: 15px; text-decoration: none; border-bottom: 1px dashed var(--line); }
+.contact-block a:hover { color: var(--ochre-deep); border-bottom-color: var(--ochre-deep); }
+.contact-block p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+/* Текстовые страницы */
+.text-page { max-width: 760px; }
+.text-page h1 { margin-bottom: 18px; }
+.text-page h2 { font-size: 19px; margin: 24px 0 8px; }
+.text-page p { margin-bottom: 10px; }
+.text-muted { color: var(--muted); margin-top: 26px; }
+
+/* Подвал (светлый) */
+.site-footer { background: var(--ink-soft); color: var(--muted); padding: 44px 0 22px; font-size: 14px; border-top: 3px solid var(--ochre); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 36px; }
+.footer-brand { color: var(--text); font-weight: 800; font-size: 17px; margin-bottom: 10px; letter-spacing: .04em; }
+.footer-sub { color: var(--ochre-deep); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 10px; }
+.footer-note { font-size: 13px; line-height: 1.5; }
+.footer-nav { display: grid; gap: 7px; }
+.footer-nav a { color: var(--muted); text-decoration: none; }
+.footer-nav a:hover { color: var(--text); }
+.footer-contacts { display: grid; gap: 7px; }
+.footer-contacts a { color: var(--text); text-decoration: none; font-weight: 700; }
+.footer-contacts .footer-plabel { font-weight: 400; font-size: 12px; color: #8E8776; }
+.footer-phone { font-size: 18px; }
+.footer-bottom { margin-top: 34px; padding-top: 18px; border-top: 1px solid rgba(26,26,26,.12); font-size: 13px; color: #8B8371; }
+
+/* Адаптив */
+@media (max-width: 1020px) {
+    .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-bear { order: -1; }
+    .hero-bear img { width: min(300px, 80%); }
+    .price-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .adv-grid, .contacts-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+    .main-nav {
+        display: none; position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--card); flex-direction: column; gap: 0; padding: 10px 20px 18px;
+        border-bottom: 3px solid var(--ochre);
+    }
+    .main-nav a { padding: 11px 0; border-bottom: 1px solid rgba(26,26,26,.08); }
+    .main-nav.open { display: flex; }
+    .main-nav .nav-phone { display: block; color: var(--ochre-deep) !important; }
+    .header-phones2 { display: none; }
+    .burger { display: block; }
+    .header-cta { display: none; }
+    .cards-grid, .steps, .adv-grid, .contacts-grid { grid-template-columns: 1fr 1fr; }
+    .form-wrap { grid-template-columns: 1fr; }
+    .hero { padding: 44px 0 52px; }
+    .section { padding: 48px 0; }
+    .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Плавающий значок ГИС (правый нижний угол) */
+.gis-fab {
+    position: fixed; right: 18px; bottom: 18px; z-index: 80;
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 14px 7px 7px; border-radius: 12px;
+    background: var(--card); border: 1.5px solid var(--line);
+    box-shadow: 0 8px 22px rgba(26,26,26,.16);
+    text-decoration: none; transition: .15s;
+}
+.gis-fab:hover { border-color: #0BA05C; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,26,26,.20); }
+.gis-fab-pin { width: 26px; height: 26px; color: var(--text); flex-shrink: 0; }
+.gis-fab-text { color: var(--text); font-size: 13.5px; font-weight: 600; }

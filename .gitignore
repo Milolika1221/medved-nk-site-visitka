@@ -1,0 +1,15 @@
+# Служебные файлы ОС
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+
+# Временные файлы и архивы сборки
+*.zip
+*.bak
+*~
+dev/
