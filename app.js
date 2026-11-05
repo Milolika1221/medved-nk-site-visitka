@@ -81,7 +81,7 @@
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({
-                access_key: "c0153a93-0b09-41c4-9926-b2506206d8bd",
+                access_key: "55b62827-6964-4f8c-8cb4-af882d1d8f54",
                 subject: "Заявка с сайта: " + (kindEl.value || "общий вопрос") + " — " + name,
                 name: name,
                 phone: phone,
