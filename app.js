@@ -59,7 +59,6 @@
         if (!form.kind.value) { setStatus("Выберите вариант из списка.", false); form.kind.focus(); return; }
         if (form.message.value.trim().length < 3) { setStatus("Заполните комментарий.", false); form.message.focus(); return; }
         if (!form.consent.checked) { setStatus("Отметьте согласие на обработку данных.", false); return; }
-        if (form._honey.value) return; // бот — молча игнорируем
 
         var btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
