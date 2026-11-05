@@ -31,7 +31,7 @@
         });
     }
 
-    // Значок ГИС: плавный переход к контактам
+    // Плавный переход к контактам (если есть .gis-fab)
     var gisFab = document.querySelector(".gis-fab");
     if (gisFab) {
         gisFab.addEventListener("click", function (e) {
@@ -41,9 +41,10 @@
         });
     }
 
+    // Форма заявки -> Web3Forms
     var form = document.getElementById("leadForm");
     var status = document.getElementById("formStatus");
-    if (!form) return;
+    if (!form || !status) return;
 
     function setStatus(text, ok) {
         status.textContent = text;
@@ -52,29 +53,41 @@
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-        var name = form.name.value.trim();
-        var phone = form.phone.value.trim();
-        if (name.length < 2) { setStatus("Укажите имя.", false); form.name.focus(); return; }
-        if (phone.replace(/\D/g, "").length < 10) { setStatus("Укажите корректный телефон.", false); form.phone.focus(); return; }
-        if (!form.kind.value) { setStatus("Выберите вариант из списка.", false); form.kind.focus(); return; }
-        if (form.message.value.trim().length < 3) { setStatus("Заполните комментарий.", false); form.message.focus(); return; }
-        if (!form.consent.checked) { setStatus("Отметьте согласие на обработку данных.", false); return; }
+
+        var nameEl = form.elements["name"];
+        var phoneEl = form.elements["phone"];
+        var kindEl = form.elements["kind"];
+        var messageEl = form.elements["message"];
+        var consentEl = form.elements["consent"];
+        var botEl = form.elements["botcheck"];
+
+        // Honeypot: если бот заполнил скрытый чекбокс — молча выходим
+        if (botEl && botEl.checked) return;
+
+        var name = nameEl ? nameEl.value.trim() : "";
+        var phone = phoneEl ? phoneEl.value.trim() : "";
+
+        if (name.length < 2) { setStatus("Укажите имя.", false); if (nameEl) nameEl.focus(); return; }
+        if (phone.replace(/\D/g, "").length < 10) { setStatus("Укажите корректный телефон.", false); if (phoneEl) phoneEl.focus(); return; }
+        if (!kindEl || !kindEl.value) { setStatus("Выберите вариант из списка.", false); if (kindEl) kindEl.focus(); return; }
+        if (!messageEl || messageEl.value.trim().length < 3) { setStatus("Заполните комментарий.", false); if (messageEl) messageEl.focus(); return; }
+        if (!consentEl || !consentEl.checked) { setStatus("Отметьте согласие на обработку данных.", false); return; }
 
         var btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
         setStatus("Отправляем…", true);
 
-        fetch('https://api.web3forms.com/submit', {
+        fetch("https://api.web3forms.com/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({
                 access_key: "c0153a93-0b09-41c4-9926-b2506206d8bd",
-                subject: "Заявка с сайта: " + (form.kind.value || "общий вопрос") + " — " + name,
+                subject: "Заявка с сайта: " + (kindEl.value || "общий вопрос") + " — " + name,
                 name: name,
                 phone: phone,
-                kind: form.kind.value,
-                message: form.message.value,
-                consent: form.consent.checked ? "Да" : "Нет"
+                kind: kindEl.value,
+                message: messageEl.value,
+                consent: "Да"
             })
         })
         .then(function (r) { return r.json(); })
