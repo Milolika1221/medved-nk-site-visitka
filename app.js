@@ -41,7 +41,6 @@
         });
     }
 
-    // Форма заявки -> FormSubmit (письмо на почту ЧОПа)
     var form = document.getElementById("leadForm");
     var status = document.getElementById("formStatus");
     if (!form) return;
@@ -70,14 +69,13 @@
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({
+                access_key: "c0153a93-0b09-41c4-9926-b2506206d8bd",
+                subject: "Заявка с сайта: " + (form.kind.value || "общий вопрос") + " — " + name,
                 name: name,
                 phone: phone,
                 kind: form.kind.value,
                 message: form.message.value,
-                _subject: "Заявка с сайта: " + (form.kind.value || "общий вопрос") + " — " + name,
-                _template: "table",
-                _captcha: "false",
-                _honey: form._honey.value
+                consent: form.consent.checked ? "Да" : "Нет"
             })
         })
         .then(function (r) { return r.json(); })
